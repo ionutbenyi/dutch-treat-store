@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "DutchConnectionString": "Data Source=(localdb)\\ProjectModels;Initial Catalog=DutchtreatDb;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true",
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "DutchTreat": "Information",
+      "Microsoft": "Warning"
+    }
+  }
+}
