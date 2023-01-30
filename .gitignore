@@ -16,7 +16,7 @@
 # Mono auto generated files
 mono_crash.*
 
-# wwwroot/lib/
+wwwroot/lib/
 
 # Build results
 [Dd]ebug/
