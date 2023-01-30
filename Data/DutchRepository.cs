@@ -107,5 +107,49 @@ namespace DutchTreat.Data
         {
             _context.Add(model);
         }
+
+        public IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems)
+        {
+            try
+            {
+                if (includeItems)
+                {
+                    return _context.Orders
+                        .Where(o => o.User.UserName == username)
+                        .Include(o => o.Items)
+                        .ThenInclude(i => i.Product)
+                        .ToList();
+                }
+                else
+                {
+                    return _context.Orders
+                        .ToList();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to load all orders: {ex}");
+                return null;
+            }
+        }
+
+        public Order GetOrderById(string name, int orderId)
+        {
+            try
+            {
+                _logger.LogInformation("Order loaded!");
+                return _context.Orders
+                    .Include(o => o.Items)
+                    .ThenInclude(i => i.Product)
+                    .Where(o => o.Id == orderId && o.User.UserName == name)
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to load order: {ex}");
+                return null;
+            }
+        }
     }
 }

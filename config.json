@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DutchConnectionString": "Data Source=(localdb)\\ProjectModels;Initial Catalog=DutchtreatDb;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true",
+    "DutchConnectionString": "Data Source=(localdb)\\ProjectModels;Initial Catalog=DutchtreatDb;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true"
   },
 
   "Logging": {
@@ -8,5 +8,10 @@
       "DutchTreat": "Information",
       "Microsoft": "Warning"
     }
+  },
+  "Token": {
+    "Key": ";/fdsdvs;sdv.dsvsdse;.",
+    "Issuer": "http://localhost:8888",
+    "Audience": "http://localhost:8888"
   }
 }

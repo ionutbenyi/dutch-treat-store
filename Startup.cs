@@ -10,11 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DutchTreat
@@ -37,10 +39,18 @@ namespace DutchTreat
             })
                 .AddEntityFrameworkStores<DutchContext>();
 
-            /*services.AddDbContext<DutchContext>(cfg =>
-            {
-                cfg.UseSqlServer(_config.GetConnectionString("DutchContextDb"));
-            });*/
+            // include cookie-based authentication
+            services.AddAuthentication()
+                .AddCookie()
+                .AddJwtBearer(cfg =>
+                {
+                    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        ValidIssuer = _config["Token:Issuer"],
+                        ValidAudience = _config["Token:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]))
+                    };
+                });
 
             services.AddDbContext<DutchContext>();
             services.AddTransient<INullMailService, NullMailService>();
