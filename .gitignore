@@ -17,6 +17,7 @@
 mono_crash.*
 
 wwwroot/lib/
+wwwroot/client/
 
 # Build results
 [Dd]ebug/

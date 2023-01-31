@@ -6,7 +6,7 @@
     <title>Dutch Treat</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
-
+    @RenderSection("head", false)
 </head>
 <body>
     <header class="container">
@@ -50,5 +50,6 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/index.js"></script>
+    @RenderSection("scripts", false);
 </body>
 </html>

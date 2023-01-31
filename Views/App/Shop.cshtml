@@ -1,10 +1,7 @@
-﻿@*
-    specify model = shape of the data we're using on that page
-    not necessary, but we get Intellisense on the formats in our project
-*@
+﻿
 @model IEnumerable<Product>
 
-    <h1>Shop</h1>
+@*<h1>Shop</h1>
     <p>Count: @Model.Count()</p>
 
 <div class="row">
@@ -24,5 +21,17 @@
         </div>
     </div>
 }
-</div>
+</div> *@
+
+@section Scripts{
+    <script src="~/client/polyfills.js"></script>
+    <script src="~/client/runtime.js"></script>
+    <script src="~/client/main.js" asp-append-version="true"></script>
+}
+
+@section head {
+    <link href="~/client/styles.css" rel="stylesheet" />
+}
+
+<the-shop></the-shop>
 
